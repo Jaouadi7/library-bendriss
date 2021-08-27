@@ -1,0 +1,26 @@
+{
+  "name": "wigo",
+  "version": "1.0.0",
+  "description": "wiGo is a development workflow created by Mohamed A. Eljaouadi to mange the clients web design and developing stages",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "gulp watch"
+  },
+  "keywords": [
+    "gulp",
+    "npm",
+    "front-end",
+    "web",
+    "design",
+    "web",
+    "development"
+  ],
+  "author": "Mohamed A. Eljaouadi",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "gulp": "^4.0.2",
+    "panini": "^1.7.2"
+  }
+}

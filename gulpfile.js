@@ -101,6 +101,18 @@ const compressImages = (  done  ) => {
     done();
 }
 
+//---------------------------------------
+//          SETUP FONTS TASK          ---
+//---------------------------------------
+
+const fonts = ( done  ) => {
+    src(`${development}fonts/**/*.['ttf', 'otf', 'css']`)
+    .pipe(dest(`${production}fonts/fonts/`))
+    .pipe(browserSync.reload({stream: true}));
+    done();
+}
+
+
 //---------------------------------------------
 //   SETUP DEVELOPMENT TASK  ( WATCH TASK)  ---
 //---------------------------------------------
@@ -110,6 +122,7 @@ const dev = ( done ) => {
     watch( `${development}scss/**/*.scss`, series( build_css, reload) );
     watch( `${development}js/**/*.js`, series( build_js, reload) );
     watch( `${development}images/*`, series( compressImages, reload) );
+    watch( `${development}fonts/**/*.['ttf', 'otf', 'css']`, series( fonts, reload) );
     done();
 }
 
@@ -122,8 +135,5 @@ task( 'html', build_html );
 task( 'css', build_css );
 task( 'js', build_js );
 task( 'images', compressImages );
-
-
-
-
+task( 'fonts', fonts );
 

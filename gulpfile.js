@@ -58,7 +58,7 @@ const build_html = ( done ) => {
 }
 
 //---------------------------------------
-//         SETUP HTML TASK            ---
+//         SETUP SCSS TASK            ---
 //---------------------------------------
 
 const build_css = ( done ) => {
@@ -78,6 +78,18 @@ const build_css = ( done ) => {
     done();
 }
 
+//---------------------------------------
+//         SETUP JS TASK            ---
+//---------------------------------------
+
+const build_js = ( done ) => {
+    src(`${development}js/**/*.js`)
+    .pipe( dest(`${production}js/`) )
+    .pipe(browserSync.reload({stream: true}));
+    done();
+}
+
+
 //---------------------------------------------
 //   SETUP DEVELOPMENT TASK  ( WATCH TASK)  ---
 //---------------------------------------------
@@ -85,6 +97,7 @@ const build_css = ( done ) => {
 const dev = ( done ) => {
     watch( `${development}html/pages/**/*.html`, series( build_html, reload) );
     watch( `${development}scss/**/*.scss`, series( build_css, reload) );
+    watch( `${development}js/**/*.js`, series( build_js, reload) );
     done();
 }
 
@@ -95,6 +108,8 @@ const dev = ( done ) => {
 task( 'watch', parallel(start_server, dev) );
 task( 'html', build_html );
 task( 'css', build_css );
+task( 'js', build_js );
+
 
 
 

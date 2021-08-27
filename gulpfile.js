@@ -17,6 +17,7 @@ import gulpSass from 'gulp-sass';
 import defaultSass from 'sass';
 import autoPrefixer from 'gulp-autoprefixer';
 import sourceMaps from 'gulp-sourcemaps';
+import images from 'gulp-image';
 
 
 //---------------------------------------
@@ -89,6 +90,16 @@ const build_js = ( done ) => {
     done();
 }
 
+//---------------------------------------
+//          SETUP IMG TASK            ---
+//---------------------------------------
+
+const compressImages = (  done  ) => {
+    src(`${development}/images/*`)
+    .pipe(images())
+    .pipe(dest(`${production}/img/`));
+    done();
+}
 
 //---------------------------------------------
 //   SETUP DEVELOPMENT TASK  ( WATCH TASK)  ---
@@ -98,6 +109,7 @@ const dev = ( done ) => {
     watch( `${development}html/pages/**/*.html`, series( build_html, reload) );
     watch( `${development}scss/**/*.scss`, series( build_css, reload) );
     watch( `${development}js/**/*.js`, series( build_js, reload) );
+    watch( `${development}images/*`, series( compressImages, reload) );
     done();
 }
 
@@ -105,10 +117,11 @@ const dev = ( done ) => {
 //            DEFINE TASKS         ---
 //------------------------------------
 
-task( 'watch', parallel(start_server, dev) );
+task( 'watch', parallel(start_server, compressImages, dev) );
 task( 'html', build_html );
 task( 'css', build_css );
 task( 'js', build_js );
+task( 'images', compressImages );
 
 
 

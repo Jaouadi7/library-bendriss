@@ -22,7 +22,7 @@ import merge from 'merge-stream';
 import fs from 'fs';
 import clean from 'gulp-clean';
 import htmlmin from 'gulp-htmlmin';
-import cleanCSS from 'clean-css';
+import cleanCSS from 'gulp-clean-css';
 import minify from 'gulp-minify';
 
 //---------------------------------------
@@ -176,7 +176,7 @@ const compressFiles = (done) => {
         cascade: false,
       })
     )
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(cleanCSS())
     .pipe(dest('build/css/'));
     // BULMA
     src(`${node_modules}bulma/*.sass`)
@@ -185,11 +185,11 @@ const compressFiles = (done) => {
         outputStyle: 'compressed',
       }).on('Error', sass.logError)
     )
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(cleanCSS())
     .pipe(dest(`build/css/assets/`));
     // FONT AWESOME
     src(`${node_modules}@fortawesome/fontawesome-free/css/all.css`)
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(cleanCSS())
     .pipe(dest(`build/fonts/fontawesome/css`));
     // MINIFY JS
     src(`${development}scripts/*.js`)

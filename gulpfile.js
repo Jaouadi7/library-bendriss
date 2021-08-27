@@ -25,6 +25,7 @@ import htmlmin from 'gulp-htmlmin';
 import cleanCSS from 'gulp-clean-css';
 import minify from 'gulp-minify';
 import netlify from 'gulp-netlify';
+import zip from 'gulp-zip';
 
 //---------------------------------------
 //    SETUP PLUGINS FOR THE PROJECT   ---
@@ -222,6 +223,31 @@ const deploy = (done) => {
     done();
 }
 
+//------------------------------------------------------
+//       PRODUCTION MODE  [ COMPLETE PROJECT  ]      ---
+//------------------------------------------------------
+
+const production_files = (done) => {
+  
+    if (fs.existsSync('./client')) {
+      src('./client').pipe(clean({ force: true }));
+    }
+    if (fs.existsSync('./build')) {
+      src('./build').pipe(clean({ force: true }));
+    }
+    src([
+      './**[^node_modules]/**/*',
+      './gulpfile.js',
+      './package-lock.json',
+      './package.json',
+    ])
+      .pipe(zip('project-files.zip'))
+      .pipe(dest('./client/'));
+  
+    done();
+}
+
+
 //---------------------------------------------
 //   SETUP DEVELOPMENT TASK  ( WATCH TASK)  ---
 //---------------------------------------------
@@ -248,4 +274,5 @@ task( 'fonts', fonts );
 task( 'assets', assets );
 task( 'build', compressFiles );
 task( 'deploy', deploy );
+task( 'complete', production_files );
 

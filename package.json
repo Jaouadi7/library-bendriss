@@ -25,7 +25,14 @@
     "gulp-image": "^6.2.1",
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
+    "merge-stream": "^2.0.0",
     "panini": "^1.7.2",
     "sass": "^1.38.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "bulma": "^0.9.3",
+    "html5shiv": "^3.7.3",
+    "respond.js": "^1.4.2"
   }
 }

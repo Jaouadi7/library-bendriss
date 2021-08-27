@@ -18,6 +18,7 @@ import defaultSass from 'sass';
 import autoPrefixer from 'gulp-autoprefixer';
 import sourceMaps from 'gulp-sourcemaps';
 import images from 'gulp-image';
+import merge from 'merge-stream';
 
 
 //---------------------------------------
@@ -112,6 +113,40 @@ const fonts = ( done  ) => {
     done();
 }
 
+//---------------------------------------
+//             ASSETS TASK            ---
+//---------------------------------------
+
+const assets = (  ) => {
+  // BULMA
+  const bulma = src(`${node_modules}bulma/*.sass`)
+    .pipe(
+      sass().on('Error', sass.logError)
+    )
+    .pipe(dest(`${production}css/assets/`));
+
+  // FONTAWESOME
+  const fontawesome_css = src(
+    `${node_modules}@fortawesome/fontawesome-free/css/all.css`
+  ).pipe(dest(`${production}fonts/fontawesome/css`));
+
+  //WEBFONTS DIR
+  const webfonts = src(
+    `${node_modules}@fortawesome/fontawesome-free/webfonts/*`
+  ).pipe(dest(`${production}fonts/fontawesome/webfonts`));
+
+  //HTML5SHIV.JS
+  const HTML5shiv = src(`${node_modules}html5shiv/dist/html5shiv.min.js`).pipe(
+    dest(`${production}js/assets`)
+  );
+  //RESPOND.JS
+  const respond = src(`${node_modules}respond.js/dest/respond.min.js`).pipe(
+    dest(`${production}js/assets`)
+  );
+
+  return merge(bulma, fontawesome_css, webfonts, HTML5shiv, respond);
+
+}
 
 //---------------------------------------------
 //   SETUP DEVELOPMENT TASK  ( WATCH TASK)  ---
@@ -130,10 +165,11 @@ const dev = ( done ) => {
 //            DEFINE TASKS         ---
 //------------------------------------
 
-task( 'watch', parallel(start_server, compressImages, dev) );
+task( 'watch', parallel(start_server, assets, compressImages, dev) );
 task( 'html', build_html );
 task( 'css', build_css );
 task( 'js', build_js );
 task( 'images', compressImages );
 task( 'fonts', fonts );
+task( 'assets', assets );
 

@@ -24,6 +24,7 @@ import clean from 'gulp-clean';
 import htmlmin from 'gulp-htmlmin';
 import cleanCSS from 'gulp-clean-css';
 import minify from 'gulp-minify';
+import netlify from 'gulp-netlify';
 
 //---------------------------------------
 //    SETUP PLUGINS FOR THE PROJECT   ---
@@ -207,6 +208,20 @@ const compressFiles = (done) => {
     done();
 }
 
+//------------------------------------------------------
+//   DEPLOY PROJECT COMPRRESSED FILES  [ NETLIFY ]   ---
+//------------------------------------------------------
+
+const deploy = (done) => {
+    src('./build/**/*').pipe(
+      netlify({
+        site_id: '06a9dbcb-01eb-4031-a381-8da9ac7e3011', //WEBSITE ID ON NETLIFY
+        access_token: 'zZFsacvSenx-5Wy-012vUnEHoq5J0ODVZccxUu_FMh8', // YOUR ACCESS TOKEN ON NETLIFY
+      })
+    );
+    done();
+}
+
 //---------------------------------------------
 //   SETUP DEVELOPMENT TASK  ( WATCH TASK)  ---
 //---------------------------------------------
@@ -232,4 +247,5 @@ task( 'images', compressImages );
 task( 'fonts', fonts );
 task( 'assets', assets );
 task( 'build', compressFiles );
+task( 'deploy', deploy );
 

@@ -1,7 +1,7 @@
 {
-  "name": "wigo",
+  "name": "BenDriss-Library",
   "version": "1.0.0",
-  "description": "wiGo is a development workflow created by Mohamed A. Eljaouadi to mange the clients web design and developing stages",
+  "description": "Convert Library Ben Driss XD Design To HTML Version",
   "main": "index.js",
   "type": "module",
   "scripts": {

@@ -5,5 +5,17 @@ html {
     color: $fontColor;
     font-weight: $fontWightLight;
     line-height: $lineHeight;
+    font-family: $mainFont;
+
+    // ANNOUNCEMENT BAR
+    .announcement-bar {
+      background-color: $secondryColor;
+      color: $whiteColor;
+      padding: 15px;
+
+      .announcement-icon {
+        margin-left: 15px;
+      }
+    }
   }
 }

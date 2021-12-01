@@ -3,7 +3,7 @@
 //---------------------------------------
 
 const development = './src/';
-const production =  './dist/';
+const production = './dist/';
 const node_modules = './node_modules/';
 
 //---------------------------------------
@@ -20,7 +20,7 @@ import sourceMaps from 'gulp-sourcemaps';
 import images from 'gulp-image';
 import merge from 'merge-stream';
 import fs from 'fs';
-import clean from 'gulp-clean';
+// import clean from 'gulp-clean';
 import htmlmin from 'gulp-htmlmin';
 import cleanCSS from 'gulp-clean-css';
 import minify from 'gulp-minify';
@@ -33,18 +33,18 @@ import zip from 'gulp-zip';
 
 const { src, dest, task, parallel, series, watch } = gulp;
 
-const start_server = ( done ) => {
-    browserSync.init({
-        server: {
-            baseDir: `${production}`
-        }
-    })
-}
+const start_server = (done) => {
+  browserSync.init({
+    server: {
+      baseDir: `${production}`,
+    },
+  });
+};
 
-const reload = ( done ) => {
-    browserSync.reload;
-    done();
-}
+const reload = (done) => {
+  browserSync.reload;
+  done();
+};
 
 const sass = gulpSass(defaultSass);
 
@@ -52,83 +52,81 @@ const sass = gulpSass(defaultSass);
 //         SETUP HTML TASK            ---
 //---------------------------------------
 
-const build_html = ( done ) => {
-    panini.refresh();
-    src(`${development}html/pages/*.html`)
-    .pipe(panini({
-        root:`${development}html/pages/`,
+const build_html = (done) => {
+  panini.refresh();
+  src(`${development}html/pages/*.html`)
+    .pipe(
+      panini({
+        root: `${development}html/pages/`,
         layouts: `${development}html/layouts/`,
         partials: `${development}html/partials/`,
-    }))
-    .pipe( dest(`${production}`) )
-    .pipe(browserSync.reload({stream: true}));
-    done();
-}
+      })
+    )
+    .pipe(dest(`${production}`))
+    .pipe(browserSync.reload({ stream: true }));
+  done();
+};
 
 //---------------------------------------
 //         SETUP SCSS TASK            ---
 //---------------------------------------
 
-const build_css = ( done ) => {
-    src(`${development}scss/**/*.scss`)
-    .pipe( sourceMaps.init() )
+const build_css = (done) => {
+  src(`${development}scss/**/*.scss`)
+    .pipe(sourceMaps.init())
+    .pipe(sass().on('error', sass.logError))
     .pipe(
-        sass().on('error', sass.logError)
-    )
-    .pipe(
-        autoPrefixer({
+      autoPrefixer({
         cascade: false,
-        })
+      })
     )
-    .pipe( sourceMaps.write('.') )
-    .pipe( dest(`${production}css/`) )
-    .pipe(browserSync.reload({stream: true}));
-    done();
-}
+    .pipe(sourceMaps.write('.'))
+    .pipe(dest(`${production}css/`))
+    .pipe(browserSync.reload({ stream: true }));
+  done();
+};
 
 //---------------------------------------
 //         SETUP JS TASK            ---
 //---------------------------------------
 
-const build_js = ( done ) => {
-    src(`${development}js/**/*.js`)
-    .pipe( dest(`${production}js/`) )
-    .pipe(browserSync.reload({stream: true}));
-    done();
-}
+const build_js = (done) => {
+  src(`${development}js/**/*.js`)
+    .pipe(dest(`${production}js/`))
+    .pipe(browserSync.reload({ stream: true }));
+  done();
+};
 
 //---------------------------------------
 //          SETUP IMG TASK            ---
 //---------------------------------------
 
-const compressImages = (  done  ) => {
-    src(`${development}/images/*`)
+const compressImages = (done) => {
+  src(`${development}/images/*`)
     .pipe(images())
     .pipe(dest(`${production}/img/`));
-    done();
-}
+  done();
+};
 
 //---------------------------------------
 //          SETUP FONTS TASK          ---
 //---------------------------------------
 
-const fonts = ( done  ) => {
-    src(`${development}fonts/**/*.['ttf', 'otf', 'css']`)
+const fonts = (done) => {
+  src(`${development}fonts/**/*.['ttf', 'otf', 'css']`)
     .pipe(dest(`${production}fonts/fonts/`))
-    .pipe(browserSync.reload({stream: true}));
-    done();
-}
+    .pipe(browserSync.reload({ stream: true }));
+  done();
+};
 
 //---------------------------------------
 //             ASSETS TASK            ---
 //---------------------------------------
 
-const assets = (  ) => {
+const assets = () => {
   // BULMA
   const bulma = src(`${node_modules}bulma/*.sass`)
-    .pipe(
-      sass().on('Error', sass.logError)
-    )
+    .pipe(sass().on('Error', sass.logError))
     .pipe(dest(`${production}css/assets/`));
 
   // FONTAWESOME
@@ -151,23 +149,22 @@ const assets = (  ) => {
   );
 
   return merge(bulma, fontawesome_css, webfonts, HTML5shiv, respond);
-
-}
+};
 
 //-------------------------------------------------
 //   BUILD MODE FOR PREVIEWS  [ MINIFY FILES]   ---
 //-------------------------------------------------
 
 const compressFiles = (done) => {
-    if (fs.existsSync('./client')) {
-      src('./client').pipe(clean({ force: true }));
-    }
-    // MINIFY HTML
-    src(`${development}html/pages/**/*.html`)
+  if (fs.existsSync('./client')) {
+    src('./client').pipe(clean({ force: true }));
+  }
+  // MINIFY HTML
+  src(`${development}html/pages/**/*.html`)
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(dest('build/'));
-    // MINIFY CSS
-    src(`${development}scss/**/*.scss`)
+  // MINIFY CSS
+  src(`${development}scss/**/*.scss`)
     .pipe(
       sass({
         outputStyle: 'compressed',
@@ -180,8 +177,8 @@ const compressFiles = (done) => {
     )
     .pipe(cleanCSS())
     .pipe(dest('build/css/'));
-    // BULMA
-    src(`${node_modules}bulma/*.sass`)
+  // BULMA
+  src(`${node_modules}bulma/*.sass`)
     .pipe(
       sass({
         outputStyle: 'compressed',
@@ -189,12 +186,12 @@ const compressFiles = (done) => {
     )
     .pipe(cleanCSS())
     .pipe(dest(`build/css/assets/`));
-    // FONT AWESOME
-    src(`${node_modules}@fortawesome/fontawesome-free/css/all.css`)
+  // FONT AWESOME
+  src(`${node_modules}@fortawesome/fontawesome-free/css/all.css`)
     .pipe(cleanCSS())
     .pipe(dest(`build/fonts/fontawesome/css`));
-    // MINIFY JS
-    src(`${development}scripts/*.js`)
+  // MINIFY JS
+  src(`${development}scripts/*.js`)
     .pipe(
       minify({
         ext: {
@@ -204,75 +201,75 @@ const compressFiles = (done) => {
       })
     )
     .pipe(dest('build/js/'));
-    // COMPRESS IMAGES
-    src(`${development}images/*`).pipe(images()).pipe(dest(`build/img/`));  
-    done();
-}
+  // COMPRESS IMAGES
+  src(`${development}images/*`).pipe(images()).pipe(dest(`build/img/`));
+  done();
+};
 
 //------------------------------------------------------
 //   DEPLOY PROJECT COMPRRESSED FILES  [ NETLIFY ]   ---
 //------------------------------------------------------
 
 const deploy = (done) => {
-    src('./build/**/*').pipe(
-      netlify({
-        site_id: '06a9dbcb-01eb-4031-a381-8da9ac7e3011', //WEBSITE ID ON NETLIFY
-        access_token: 'zZFsacvSenx-5Wy-012vUnEHoq5J0ODVZccxUu_FMh8', // YOUR ACCESS TOKEN ON NETLIFY
-      })
-    );
-    done();
-}
+  src('./build/**/*').pipe(
+    netlify({
+      site_id: '06a9dbcb-01eb-4031-a381-8da9ac7e3011', //WEBSITE ID ON NETLIFY
+      access_token: 'zZFsacvSenx-5Wy-012vUnEHoq5J0ODVZccxUu_FMh8', // YOUR ACCESS TOKEN ON NETLIFY
+    })
+  );
+  done();
+};
 
 //------------------------------------------------------
 //       PRODUCTION MODE  [ COMPLETE PROJECT  ]      ---
 //------------------------------------------------------
 
 const production_files = (done) => {
-  
-    if (fs.existsSync('./client')) {
-      src('./client').pipe(clean({ force: true }));
-    }
-    if (fs.existsSync('./build')) {
-      src('./build').pipe(clean({ force: true }));
-    }
-    src([
-      './**[^node_modules]/**/*',
-      './gulpfile.js',
-      './package-lock.json',
-      './package.json',
-    ])
-      .pipe(zip('project-files.zip'))
-      .pipe(dest('./client/'));
-  
-    done();
-}
+  if (fs.existsSync('./client')) {
+    src('./client').pipe(clean({ force: true }));
+  }
+  if (fs.existsSync('./build')) {
+    src('./build').pipe(clean({ force: true }));
+  }
+  src([
+    './**[^node_modules]/**/*',
+    './gulpfile.js',
+    './package-lock.json',
+    './package.json',
+  ])
+    .pipe(zip('project-files.zip'))
+    .pipe(dest('./client/'));
 
+  done();
+};
 
 //---------------------------------------------
 //   SETUP DEVELOPMENT TASK  ( WATCH TASK)  ---
 //---------------------------------------------
 
-const dev = ( done ) => {
-    watch( `${development}html/pages/**/*.html`, series( build_html, reload) );
-    watch( `${development}scss/**/*.scss`, series( build_css, reload) );
-    watch( `${development}js/**/*.js`, series( build_js, reload) );
-    watch( `${development}images/*`, series( compressImages, reload) );
-    watch( `${development}fonts/**/*.['ttf', 'otf', 'css']`, series( fonts, reload) );
-    done();
-}
+const dev = (done) => {
+  watch(`${development}html/pages/**/*.html`, series(build_html, reload));
+  watch(`${development}scss/**/*.scss`, series(build_css, reload));
+  watch(`${development}js/**/*.js`, series(build_js, reload));
+  watch(`${development}images/*`, series(compressImages, reload));
+  watch(
+    `${development}fonts/**/*.['ttf', 'otf', 'css']`,
+    series(fonts, reload)
+  );
+  done();
+};
 
 //------------------------------------
 //            DEFINE TASKS         ---
 //------------------------------------
 
-task( 'watch', parallel(start_server, assets, compressImages, dev) );
-task( 'html', build_html );
-task( 'css', build_css );
-task( 'js', build_js );
-task( 'images', compressImages );
-task( 'fonts', fonts );
-task( 'assets', assets );
-task( 'build', compressFiles );
-task( 'deploy', deploy );
-task( 'complete', production_files );
-
+task('watch', parallel(start_server, assets, compressImages, dev));
+task('html', build_html);
+task('css', build_css);
+task('js', build_js);
+task('images', compressImages);
+task('fonts', fonts);
+task('assets', assets);
+task('build', compressFiles);
+task('deploy', deploy);
+task('complete', production_files);

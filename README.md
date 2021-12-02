@@ -7,3 +7,11 @@
 - ✅ Setup The Project Files
 - ✅ Announcement Bar Coded
 - ✅ Navbar Coded
+- ⏳ Home Section
+- ⏳ Marks Section
+- ⏳ Categories Section
+- ⏳ Services Section
+- ⏳ Testimonials Section
+- ⏳ Blog Section
+- ⏳ Newsletter Section
+- ⏳ Footer Section

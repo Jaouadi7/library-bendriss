@@ -4,6 +4,6 @@
 
 ## 🎯 Development Tasks List
 
-✅ Setup The Project Files
-✅ Announcement Bar Coded
-✅ Navbar Coded
+- ✅ Setup The Project Files
+- ✅ Announcement Bar Coded
+- ✅ Navbar Coded

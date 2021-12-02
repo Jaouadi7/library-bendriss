@@ -1,0 +1,12 @@
+// RTL SUPPORT
+.navbar {
+  .navbar-end {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
+.buttons .button:not(:last-child):not(.is-fullwidth) {
+  margin-right: 0 !important;
+  margin-left: 0.5rem;
+}

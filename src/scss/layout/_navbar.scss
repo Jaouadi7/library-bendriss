@@ -1,0 +1,24 @@
+// NAVBAR
+.navbar {
+  .navbar-item {
+    color: $primaryColor;
+
+    .logo {
+      width: 70px;
+      height: auto;
+      max-height: initial;
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .buttons {
+    .button {
+      color: $primaryColor;
+      border: none;
+      font-size: 18px;
+    }
+  }
+}

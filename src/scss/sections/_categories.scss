@@ -1,0 +1,24 @@
+.store-categories {
+  .category-item {
+    padding: 2rem 2rem 0;
+    border-radius: 7px;
+    background: linear-gradient(#eff3fd, #fff0ff);
+    .category-title {
+      font-size: 1.1rem;
+      color: $primaryColor;
+      margin-bottom: 10px;
+    }
+    .category-link {
+      margin-bottom: 35px;
+      a {
+        font-size: 0.9rem;
+        &:hover {
+          color: $primaryColor;
+        }
+        .fas {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

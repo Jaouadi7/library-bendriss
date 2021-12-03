@@ -3,6 +3,9 @@
     padding: 2rem 2rem 0;
     border-radius: 7px;
     background: linear-gradient(#eff3fd, #fff0ff);
+    position: relative;
+    min-height: 350px;
+
     .category-title {
       font-size: 1.1rem;
       color: $primaryColor;
@@ -19,6 +22,19 @@
           margin-left: 5px;
         }
       }
+    }
+
+    .school-category-image {
+      img {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    .is-flex {
+      flex-direction: column;
+      height: calc(350px - 2rem);
+      justify-content: space-between;
     }
   }
 }

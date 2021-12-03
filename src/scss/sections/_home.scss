@@ -1,0 +1,35 @@
+// HOME SECTION
+.home {
+  background-color: $skyColor;
+  border-radius: 0 0 0 185px;
+  min-height: 50vh;
+  position: relative;
+  overflow: hidden;
+
+  .home-image {
+    .ellipse {
+      width: 350px;
+      height: 350px;
+      background: rgba($color: $primaryColor, $alpha: 0.55);
+      display: inline-block;
+      border-radius: 50%;
+    }
+
+    img {
+      position: absolute;
+      bottom: -3rem;
+    }
+  }
+
+  .home-content {
+    h1.home-title {
+      color: $primaryColor;
+    }
+
+    p.home-description {
+      color: $greyColor;
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -10,3 +10,8 @@
   margin-right: 0 !important;
   margin-left: 0.5rem;
 }
+
+.button .icon:first-child:not(:last-child) {
+  margin-right: calc(-0.5em - 1px);
+  margin-left: 0.25em;
+}

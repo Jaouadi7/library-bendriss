@@ -1,0 +1,10 @@
+.bendriss-btn {
+  background-color: $primaryColor;
+  color: $whiteColor;
+  font-weight: $fontWightMedium;
+  font-family: $mainFont;
+
+  &:hover {
+    color: $whiteColor;
+  }
+}

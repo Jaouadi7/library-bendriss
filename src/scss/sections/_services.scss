@@ -1,4 +1,42 @@
 .services {
   background-color: #fbfbfb;
   border-radius: 0 185px 100px;
+
+  .services-title {
+    color: $primaryColor;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .service-subtitle {
+    color: $greyColor;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+  }
+
+  .service-item {
+    background-color: #f4f8fd;
+    border-radius: 9px;
+    padding: 2.25rem 1rem;
+    text-align: center;
+
+    .service-image {
+      background-color: #e8edfa;
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 15px;
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width: 96px;
+        margin: auto;
+      }
+    }
+    h4.service-name {
+      font-weight: bold;
+      color: $primaryColor;
+    }
+  }
 }

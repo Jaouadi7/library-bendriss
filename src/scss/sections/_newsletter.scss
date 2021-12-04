@@ -1,0 +1,37 @@
+.newsletter {
+  .newsletter-content {
+    .newsletter-title {
+      margin-bottom: 15px;
+    }
+    p.newsletter-p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }
+
+    #newsletter-form {
+      .input {
+        width: 350px;
+        border-radius: 0 25px 25px 0;
+        border: none;
+        box-shadow: none;
+        background-color: $skyColor;
+        color: $darkColor;
+        padding: 25px;
+      }
+
+      .input::placeholder {
+        color: $darkColor;
+      }
+
+      .submit-btn {
+        background-color: $primaryColor;
+        color: $whiteColor;
+        border: none;
+        border-radius: 25px 0 0 25px;
+        font-weight: bold;
+        width: 100px;
+        min-height: 50px;
+      }
+    }
+  }
+}

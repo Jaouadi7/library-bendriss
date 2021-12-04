@@ -9,6 +9,12 @@
   }
 }
 
+input::placeholder,
+button,
+input {
+  font-family: $mainFont;
+}
+
 h2.section-title {
   color: $primaryColor;
   font-size: 1.4rem;

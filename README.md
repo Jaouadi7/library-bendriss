@@ -12,7 +12,7 @@
 - ✅ Categories Section
 - ✅ Services Section
 - ✅ Testimonials Section
-- ⏳ Blog Section
+- ✅ Blog Section
 - ⏳ Newsletter Section
 - ⏳ Footer Section
 - ⏳ Make The Design Full Responsive

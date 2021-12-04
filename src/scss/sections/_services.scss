@@ -1,12 +1,7 @@
 .services {
   background-color: #fbfbfb;
-  border-radius: 0 185px 100px;
-
-  .services-title {
-    color: $primaryColor;
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
+  border-radius: 0 185px 0 0;
+  padding-bottom: 150px;
 
   .service-subtitle {
     color: $greyColor;

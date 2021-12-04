@@ -1,0 +1,76 @@
+.testimonials {
+  position: relative;
+  padding-bottom: 3rem;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100px;
+    background-color: #fbfbfb;
+    position: absolute;
+    border-radius: 0 0 100px 100px;
+  }
+
+  .testimoials-container {
+    max-width: 80%;
+    margin: auto;
+    border-radius: 9px;
+    background: linear-gradient(to right, #2b3c88, #273057);
+    padding: 4rem 2.5rem;
+    position: relative;
+
+    .current-reviewer {
+      position: absolute;
+      top: -50px;
+      .image {
+        max-width: 100px;
+      }
+    }
+
+    .other-reviewers {
+      display: flex;
+      position: absolute;
+      top: -32px;
+      left: -30px;
+      .image {
+        max-width: 64px;
+        top: 0;
+      }
+
+      .person-2 {
+        left: 19px;
+      }
+      .person-3 {
+        left: 40px;
+      }
+      .person-4 {
+        left: 64px;
+      }
+    }
+
+    .review-item {
+      color: $whiteColor;
+      line-height: 2;
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+
+    .reviwes-icon {
+      width: 50px;
+      height: 50px;
+      background-color: $whiteColor;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .testimonials-title {
+    margin-top: 30px;
+  }
+}

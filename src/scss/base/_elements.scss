@@ -13,4 +13,8 @@ h2.section-title {
   color: $primaryColor;
   font-size: 1.4rem;
   font-weight: bold;
+  .section-subtitle {
+    color: $greyColor;
+    font-size: 1.1rem;
+  }
 }

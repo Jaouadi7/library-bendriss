@@ -1,0 +1,105 @@
+.latest-posts {
+  background-color: #fbfbfb;
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .blog-title {
+      margin-bottom: 15px;
+    }
+    .blog-subtitle {
+      color: #9194a5;
+      max-width: 55%;
+    }
+  }
+
+  .blog-link {
+    a.button {
+      border-color: $primaryColor;
+      color: $primaryColor;
+      background-color: $skyColor;
+      .icon:last-child:not(:first-child) {
+        margin-right: 0.25em;
+        margin-left: calc(-0.5em - 1px);
+      }
+    }
+  }
+
+  .posts-items {
+    margin-top: 35px;
+    .post-item {
+      box-shadow: none;
+      border-radius: 0 0 15px 15px !important;
+
+      .post-category {
+        font-size: 14px;
+        padding: 5px 15px;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        display: inline-block;
+        .circle {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+          margin-left: 5px;
+        }
+      }
+      .offers-category {
+        background-color: #d7f7f3;
+        color: #33746a;
+        .circle {
+          background-color: #33746a;
+        }
+      }
+      .services-category {
+        background-color: #ffedf6;
+        color: $secondryColor;
+        .circle {
+          background-color: $secondryColor;
+        }
+      }
+
+      .post-title {
+        font-weight: bold;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $primaryColor;
+        margin-bottom: 15px;
+        min-height: 75px;
+
+        a {
+          color: $primaryColor;
+        }
+      }
+
+      .post-foot {
+        display: flex;
+        justify-content: space-between;
+
+        .comments-counter {
+          font-weight: bold;
+          color: $primaryColor;
+          span:last-child {
+            font-size: 12px;
+            margin-right: 7px;
+          }
+        }
+
+        .read-me {
+          a {
+            font-weight: bold;
+            color: $primaryColor;
+            span:first-child {
+              font-size: 13px;
+            }
+            span:last-child {
+              margin-right: 7px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

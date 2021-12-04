@@ -1,4 +1,9 @@
 .newsletter {
+  position: relative;
+  z-index: 1;
+  border-radius: 185px 0 0 0;
+  background-color: $whiteColor;
+
   .newsletter-content {
     .newsletter-title {
       margin-bottom: 15px;

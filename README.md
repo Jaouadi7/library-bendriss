@@ -15,3 +15,5 @@
 - ⏳ Blog Section
 - ⏳ Newsletter Section
 - ⏳ Footer Section
+- ⏳ Make The Design Full Responsive
+- ⏳ IMPROVE SEO ( ON PAGE )

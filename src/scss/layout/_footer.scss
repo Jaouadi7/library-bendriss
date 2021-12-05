@@ -1,0 +1,50 @@
+footer {
+  .main-footer {
+    background-color: #f4f8fd;
+
+    .bendriss-info {
+      .is-flex {
+        align-items: center;
+      }
+      .image {
+        max-width: 96px;
+      }
+      h5 {
+        font-weight: 600;
+        color: $primaryColor;
+      }
+      .about-descrip p {
+        color: $primaryColor;
+        line-height: 2;
+      }
+    }
+    .menu {
+      .menu-label {
+        color: $primaryColor;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: normal;
+        margin-right: 0.75em;
+      }
+
+      .menu-list {
+        a {
+          color: $primaryColor;
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+  .copyrights {
+    padding: 1.5rem;
+    a {
+      color: $primaryColor;
+      font-weight: 500;
+      i {
+        color: $secondryColor;
+      }
+    }
+  }
+}

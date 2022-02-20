@@ -15,5 +15,6 @@
 - ✅ Blog Section
 - ✅ Newsletter Section
 - ✅ Footer Section
+- ⏳ Develop WP Theme for the design ( Progress now )
 - ⏳ Make The Design Full Responsive
 - ⏳ IMPROVE SEO ( ON PAGE )
